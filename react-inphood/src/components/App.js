@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import logo from '../data/logo.svg'
-import './App.css'
+import './styles/App.css'
+
+// import 'bootstrap/less/bootstrap.less'
+import './styles/custom-styles.css'
+
+import HeaderNavigation from './HeaderNavigation'
+import Body from './Body'
+import Footer from './Footer'
 
 export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          Money $$.
-        </p>
+        <HeaderNavigation />
+        <Body />
+        <Footer />
       </div>
     )
   }
