@@ -1,3 +1,6 @@
+{% load render_bundle from webpack_loader %}
+{% render_bundle ‘main’ %}
+<div id="container">
 {% if latestNutritionInfoList %}
     <ul>
     {% for nutritionInfo in latestNutritionInfoList %}
@@ -7,3 +10,4 @@
 {% else %}
     <p>No Nutrition Info is available.</p>
 {% endif %}
+</div>
