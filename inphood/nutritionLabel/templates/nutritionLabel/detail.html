@@ -1,0 +1,10 @@
+<h1>{{ nutritionInfo.description }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'nutritionLabel:detail' nutritionInfo.id %}" method="post">
+{% csrf_token %}
+<input type="radio" name="nutritionInfo" id="{{nutritionInfo.id}}" value="0" />
+<label>{{nutritionInfo.description}}</label><br />
+<input type="submit" value="NutritionInfo" />
+

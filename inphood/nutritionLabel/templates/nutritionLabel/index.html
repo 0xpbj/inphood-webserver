@@ -1,0 +1,9 @@
+{% if latestNutritionInfoList %}
+    <ul>
+    {% for nutritionInfo in latestNutritionInfoList %}
+        <li><a href="{% url 'nutritionLabel:detail' nutritionInfo.id %}">{{ nutritionInfo.description }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Nutrition Info is available.</p>
+{% endif %}
