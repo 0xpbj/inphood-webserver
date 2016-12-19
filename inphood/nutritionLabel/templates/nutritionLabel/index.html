@@ -1,13 +1,23 @@
 {% load render_bundle from webpack_loader %}
-{% render_bundle ‘main’ %}
-<div id="container">
-{% if latestNutritionInfoList %}
-    <ul>
-    {% for nutritionInfo in latestNutritionInfoList %}
-        <li><a href="{% url 'nutritionLabel:detail' nutritionInfo.id %}">{{ nutritionInfo.description }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No Nutrition Info is available.</p>
-{% endif %}
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    {% render_bundle 'main' %}
+
+    {% if latestNutritionInfoList %}
+        <ul>
+        {% for nutritionInfo in latestNutritionInfoList %}
+            <li><a href="{% url 'nutritionLabel:detail' nutritionInfo.id %}">{{ nutritionInfo.description }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Nutrition Info is available.</p>
+    {% endif %}
+  </body>
+</html>
