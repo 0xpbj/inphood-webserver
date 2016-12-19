@@ -3,39 +3,29 @@ var webpack = require('webpack');
 var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  // devtool: 'cheap-module-eval-source-map',
   context: __dirname,
   entry: [
-    'webpack-hot-middleware/client',
-    './assets/js/index',
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './assets/js/index'
   ],
   output: {
-    //where you want your compiled bundle to be stored
-    path: path.resolve('./assets/bundles/'), 
-    //naming convention webpack should use for your files
-    filename: '[name]-[hash].js', 
+    path: path.resolve('./assets/bundles/'),
+    filename: '[name]-[hash].js',
+    publicPath: 'http://localhost:3000/assets/bundles/', // Tell django to use this URL to load packages and not use STATIC_URL + bundle_name
   },
   plugins: [
-    new BundleTracker({filename: './webpack-stats.json'}), 
-    //makes jQuery available in every module
-    new webpack.ProvidePlugin({ 
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery' 
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    new BundleTracker({filename: './webpack-stats.json'}),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(), // don't reload if there is an error
   ],
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/, 
-        loaders: ['react-hot', 'babel', 'babel-loader'],
-        include: path.join(__dirname, 'assets/js/'),
-        query: {
-            //specify that we will be dealing with React code
-            presets: ['react'] 
-        }
+        loaders: ['react-hot', 'babel-loader'],
       },
       { 
         test: /\.css$/, 
