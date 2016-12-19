@@ -30,7 +30,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/, 
-        loaders: ['react-hot', 'babel', 'babel-loader'],
+        loader: 'babel-loader',
         include: path.join(__dirname, 'assets/js/'),
         query: {
             //specify that we will be dealing with React code
