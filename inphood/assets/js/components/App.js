@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
-import logo from '../data/logo.svg'
-import './styles/App.css'
+import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
-// import 'bootstrap/less/bootstrap.less'
+import Archives from "./pages/Archives";
+import Featured from "./pages/Featured";
+import Layout from "./pages/Layout";
+import Settings from "./pages/Settings";
+import './styles/App.css'
 import './styles/custom-styles.css'
 
-import HeaderNavigation from './HeaderNavigation'
-import Body from './Body'
-import Footer from './Footer'
 
 export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <HeaderNavigation />
-        <Body />
-        <Footer />
-      </div>
+      <Router history={hashHistory}>
+        <Route path="/" component={Layout}>
+          <IndexRoute component={Featured}></IndexRoute>
+          <Route path="archives(/:article)" name="archives" component={Archives}></Route>
+          <Route path="settings" name="settings" component={Settings}></Route>
+        </Route>
+      </Router>
     )
   }
 }

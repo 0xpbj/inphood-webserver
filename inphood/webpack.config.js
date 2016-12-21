@@ -26,6 +26,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/, 
         loaders: ['react-hot', 'babel-loader'],
+        // loader: 'babel-loader',
+        // query: {
+        //   presets: ['react', 'es2015', 'stage-0'],
+        //   plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+        // }
       },
       { 
         test: /\.css$/, 
