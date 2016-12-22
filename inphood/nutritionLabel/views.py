@@ -22,4 +22,9 @@ def results(request, nutrition_id):
   return render(request, 'nutritionLabel/results.html', {'nutritionInfo': nutritionInfo})
 
 def foodDetail(request, food_name):
-  return HttpResponse("Nutrition info for food: " + food_name)
+  matches = NutritionInfo.objects.filter(description__startswith=food_name)
+  descriptions = ""
+  for match in matches:
+    descriptions += match.description + "<br>"
+
+  return HttpResponse("Nutrition matches for term " + food_name + " = " + str(len(matches)) + ". <br>" + descriptions)
