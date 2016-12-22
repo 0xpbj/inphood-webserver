@@ -20,3 +20,6 @@ def detail(request, nutrition_id):
 def results(request, nutrition_id):
   nutritionInfo = get_object_or_404(NutritionInfo, pk=nutrition_id)
   return render(request, 'nutritionLabel/results.html', {'nutritionInfo': nutritionInfo})
+
+def foodDetail(request, food_name):
+  return HttpResponse("Nutrition info for food: " + food_name)
